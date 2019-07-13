@@ -29,18 +29,18 @@ class MyApp extends StatelessWidget {
         child: RaisedButton(
           child: Text('Callout'),
           onPressed: () {
-            // if(FirebaseAuth.instance.currentUser() != null){
-            // // wrong call in wrong place!
-            //   Navigator.push(
-            //     context,
-            //     MaterialPageRoute(builder: (context) => CallOutRecord ()),
-            //   );
-            // } else {
+            if(FirebaseAuth.instance.currentUser() != null){
+            // wrong call in wrong place!
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => CallOutRecord ()),
+              );
+            } else {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => SignIn ()),
               );
-            // }
+            }
           },
         ),
       ),

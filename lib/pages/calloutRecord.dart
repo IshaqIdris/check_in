@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart' show DateFormat;
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import 'dart:io';
 import 'dart:async';
@@ -12,6 +13,7 @@ class CallOutRecord extends StatefulWidget {
 }
 
 class _MyAppState extends State<CallOutRecord> {
+  final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   bool _isRecording = false;
   bool _isPlaying = false;
   StreamSubscription _recorderSubscription;
@@ -35,6 +37,11 @@ class _MyAppState extends State<CallOutRecord> {
     flutterSound.setDbPeakLevelUpdate(0.8);
     flutterSound.setDbLevelEnabled(true);
     initializeDateFormatting();
+  }
+
+  void signOut() {
+    firebaseAuth.signOut();
+    print('Signed Out!');
   }
 
   void startRecorder() async{
