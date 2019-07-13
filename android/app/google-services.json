@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "147084282488",
+    "firebase_url": "https://checkin-eca5f.firebaseio.com",
+    "project_id": "checkin-eca5f",
+    "storage_bucket": "checkin-eca5f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:147084282488:android:ccbc34e6f4109efe",
+        "android_client_info": {
+          "package_name": "com.example.u_up"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "147084282488-of4j653bac38fuo7h5t3hbkgh7o6p141.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVP9SkikIRPnOrvg0LBa0uCUHBL2Msi9Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "147084282488-of4j653bac38fuo7h5t3hbkgh7o6p141.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "147084282488-nl5vj682pi96t6u5uc57ljlb3v6mgq1n.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.uUp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
