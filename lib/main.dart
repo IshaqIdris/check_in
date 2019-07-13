@@ -4,6 +4,9 @@
 
 import 'package:flutter/material.dart';
 import './pages/calloutRecord.dart';
+import './pages/signIn.dart';
+
+import 'package:firebase_auth/firebase_auth.dart';
 
 
 void main() {
@@ -26,10 +29,18 @@ class MyApp extends StatelessWidget {
         child: RaisedButton(
           child: Text('Callout'),
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => CallOutRecord ()),
-            );
+            if(FirebaseAuth.instance.currentUser() != null){
+            // wrong call in wrong place!
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => CallOutRecord ()),
+              );
+            } else {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SignIn ()),
+              );
+            }
           },
         ),
       ),
