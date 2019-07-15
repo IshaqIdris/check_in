@@ -3,16 +3,18 @@
 // found in the LICENSE file.
 
 import 'package:flutter/material.dart';
+import 'package:flutter_sound_example/pages/calloutText.dart' as prefix0;
 import './pages/calloutRecord.dart';
 import './pages/signIn.dart';
+import './pages/calloutText.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
 
 
 void main() {
   runApp(MaterialApp(
-    title: 'Navigation Basics',
-    home: MyApp(),
+    title: 'COLOR',
+    home: SignIn(),
   ));
 }
 
@@ -20,27 +22,28 @@ class MyApp extends StatelessWidget {
    @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Welcome to Flutter',
+      title: 'COLOR',
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Welcome to Flutter'),
+          title: Text('COLOR'),
         ),
         body: Center(
+        
         child: RaisedButton(
-          child: Text('Callout'),
+          child: Text('View Callouts'),
           onPressed: () {
-            if(FirebaseAuth.instance.currentUser() != null){
+            // if(FirebaseAuth.instance.currentUser() != null){
             // wrong call in wrong place!
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => CallOutRecord ()),
+                MaterialPageRoute(builder: (context) => CalloutText ()),
               );
-            } else {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => SignIn ()),
-              );
-            }
+            // } else {
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(builder: (context) => SignIn ()),
+              // );
+            // }
           },
         ),
       ),

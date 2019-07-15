@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart' show DateFormat;
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
+import 'package:firebase_storage/firebase_storage.dart';
+import 'dart:math';
 import 'dart:io';
 import 'dart:async';
 import 'package:flutter_sound/flutter_sound.dart';
@@ -14,6 +15,10 @@ class CallOutRecord extends StatefulWidget {
 
 class _MyAppState extends State<CallOutRecord> {
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+  // StorageUploadTask uploadTask;
+  // String userId;
+  // String fileName; 
+  // StorageReference storageRef; 
   bool _isRecording = false;
   bool _isPlaying = false;
   StreamSubscription _recorderSubscription;
@@ -36,8 +41,16 @@ class _MyAppState extends State<CallOutRecord> {
     flutterSound.setSubscriptionDuration(0.01);
     flutterSound.setDbPeakLevelUpdate(0.8);
     flutterSound.setDbLevelEnabled(true);
+    // getUser();
     initializeDateFormatting();
+    // fileName = Random().nextInt(10000).toString() + userId +'.mp3';
+    // storageRef = FirebaseStorage.instance.ref().child(fileName);
   }
+
+  // getUser() async {
+  //   FirebaseUser user = await FirebaseAuth.instance.currentUser();
+  //   userId = user.uid.toString();
+  // }
 
   void signOut() {
     firebaseAuth.signOut();
@@ -101,6 +114,7 @@ class _MyAppState extends State<CallOutRecord> {
     String path = await flutterSound.startPlayer(null);
     await flutterSound.setVolume(1.0);
     print('startPlayer: $path');
+    debugPrint('startPlayer: $path');
 
     try {
       _playerSubscription = flutterSound.onPlayerStateChanged.listen((e) {
@@ -296,9 +310,10 @@ class _MyAppState extends State<CallOutRecord> {
                 },
                 divisions: max_duration.toInt()
               )
-            )
+            ),
+            //      
           ],
-        ),
+        )
       ),
     );
   }

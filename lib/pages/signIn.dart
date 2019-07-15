@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import '../main.dart';
 
 import 'dart:async';
 
@@ -36,15 +37,13 @@ class LoginState extends State<SignIn> {
           minWidth: 150.0,
           height: 50.0,
           color: Colors.orange,
-          child: Text('Login as Guest'),
+          child: Text('Welcome'),
           onPressed: () {
             signInAnon().then((FirebaseUser user) {
-              Navigator
-                  .of(context)
-                  .push(MaterialPageRoute(
-                      builder: (BuildContext context) => HomePage(
-                            user: user,
-                          )))
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => MyApp()),
+              )
                   .catchError((e) => print(e));
             });
           },
@@ -52,23 +51,9 @@ class LoginState extends State<SignIn> {
       ),
     );
 
-    final logoutButton = Container(
-      padding: EdgeInsets.all(10.0),
-      child: FlatButton(
-        color: Colors.white,
-        onPressed: () {
-          signOut();
-        },
-        child: Text(
-          "Sign Out",
-          style: TextStyle(color: Colors.black),
-        ),
-      ),
-    );
-
     return Scaffold(
       appBar: AppBar(
-        title: Text("Login Page"),
+        title: Text("Welcome"),
       ),
       body: Center(
         child: ListView(
@@ -76,7 +61,6 @@ class LoginState extends State<SignIn> {
           padding: EdgeInsets.all(10.0),
           children: <Widget>[
             loginbutton,
-            logoutButton,
           ],
         ),
       ),
